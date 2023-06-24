@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="row">
+            <div class="col-12 mt-5">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control form-control-lg" placeholder="name@example.com">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control form-control-lg">
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-lg btn-primary text-center w-100" @click="emailAuth">
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-5" >
+                <p class="text-center">OR</p>
+                <button class="btn btn-lg btn-light d-flex align-items-center justify-content-center w-100" @click="googleAuth" style="box-shadow: 0 0 5px rgba(0,0,0,0.5);">
+                    <img src="../google_logo.svg" style="margin-right: 10px;">
+                    Continue with Google
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

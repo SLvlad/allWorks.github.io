@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 align = "center">Увійти на сайт</h1>
+    <form>
+        <label name="login">Пошта </label><br>
+        <input type="text" name="login" id="email"></input><br>
+        <br> 
+        <label name="pass">Пароль</label><br>
+        <input type="password" name="pass" id="password"></input><br>
+        <button onclick="check_sign()">Увійти</button>
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

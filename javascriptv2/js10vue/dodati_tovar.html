@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="name" placeholder="Ім'я товару"><br><br>
+    <input type="text" id="price" placeholder="Ціна товару"><br><br>
+    <input type="text" id="img" placeholder="Картинка товару"><br><br>
+    <input type="text" id="developer" placeholder="Виробник товару"><br><br>
+    <input type="text" id="reviews" placeholder="Кількість відгуків"><br><br>
+    <select name="" id="category">
+        <option value="products">products</option>
+        <option value="phones">phones</option>
+    </select>
+    <button onclick="DrawTovar()">Додати товар</button>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+                 <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+                <script src="../firebase/fb.js"></script>
+                 <script src="dod.js"></script>
+</body>
+</html>
