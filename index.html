@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamino Ogrodzenia — wycena ogrodzenia panelowego online w 2 minuty</title>
+<meta name="description" content="Ogrodzenia panelowe — sprzedaż i montaż w płn. Mazowszu. Policz orientacyjną cenę online i otrzymaj dokładną wycenę w 24h.">
+
+<!-- Google Fonts: Bebas Neue / Lato / Questrial (zgodnie z brand kit) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700;900&family=Questrial&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     HEADER
+     ========================================================================== -->
+<header class="site-header">
+  <div class="container">
+    <a href="#top" class="site-header__logo">
+      <img src="assets/logo.svg" alt="Mamino Ogrodzenia">
+    </a>
+    <div class="site-header__right">
+      <a class="site-header__phone" href="tel:+48518784697">518 784 697</a>
+      <a href="#kalkulator" class="btn btn-cta" data-event="cta_header">Oblicz cenę ogrodzenia</a>
+    </div>
+  </div>
+</header>
+
+<!-- ==========================================================================
+     1. HERO
+     ========================================================================== -->
+<section class="hero" id="top">
+  <img src="assets/hero-bg.svg" alt="" class="hero__bg">
+  <div class="hero__scrim"></div>
+  <div class="container">
+    <div class="hero__badge">
+      <span class="stars">★★★★★</span>
+      <span>4,8★ w 44 opiniach Google</span>
+    </div>
+    <h1>Poznaj cenę swojego ogrodzenia w 2 minuty</h1>
+    <p class="lead">Podaj kilka parametrów i zobacz orientacyjną cenę ogrodzenia panelowego od razu na ekranie — bez czekania na telefon od handlowca.</p>
+    <div class="hero__actions">
+      <a href="#kalkulator" class="btn btn-cta" data-event="cta_hero">Oblicz cenę ogrodzenia</a>
+    </div>
+    <p class="hero__hint">Bezpłatnie · Bez zobowiązań · Wynik widzisz od razu na ekranie</p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     2. KALKULATOR
+     ========================================================================== -->
+<section class="section calculator" id="kalkulator">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Kalkulator</span>
+      <h2>Ile będzie kosztować Twoje ogrodzenie?</h2>
+      <p>Wpisz parametry swojego ogrodzenia — cena aktualizuje się na żywo.</p>
+    </div>
+
+    <div class="calculator__wrap">
+      <!-- Formularz parametrów -->
+      <form class="calc-card" id="calc-form" onsubmit="return false;">
+        <div class="calc-grid">
+
+          <div class="calc-field calc-field--span2">
+            <label for="calc-length">Długość ogrodzenia (mb)</label>
+            <input type="number" id="calc-length" name="length" min="1" step="1" value="30" inputmode="numeric">
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-height">Wysokość</label>
+            <select id="calc-height" name="height">
+              <option value="103">103 cm</option>
+              <option value="123">123 cm</option>
+              <option value="143">143 cm</option>
+              <option value="153">153 cm</option>
+              <option value="173">173 cm</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-color">Kolor</label>
+            <select id="calc-color" name="color">
+              <option value="antracyt">Antracyt / grafit</option>
+              <option value="zielony">Zielony</option>
+              <option value="czarny">Czarny</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-wire">Grubość drutu</label>
+            <select id="calc-wire" name="wire">
+              <option value="4">4 mm</option>
+              <option value="5">5 mm</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-post">Grubość słupka</label>
+            <select id="calc-post" name="post">
+              <option value="1.5">1,5 mm</option>
+              <option value="2">2 mm</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-gate-count">Furtka (szt.)</label>
+            <input type="number" id="calc-gate-count" name="gateCount" min="0" step="1" value="0">
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-option">Dostawa / montaż</label>
+            <select id="calc-option" name="option">
+              <option value="montaz">Dostawa + montaż</option>
+              <option value="dostawa">Tylko dostawa</option>
+              <option value="odbior">Odbiór własny</option>
+            </select>
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-brama-count">Brama (szt.)</label>
+            <input type="number" id="calc-brama-count" name="bramaCount" min="0" step="1" value="0">
+          </div>
+
+          <div class="calc-field">
+            <label for="calc-brama-type">Typ bramy</label>
+            <select id="calc-brama-type" name="bramaType">
+              <option value="dwuskrzydlowa">Dwuskrzydłowa</option>
+              <option value="przesuwna">Przesuwna</option>
+            </select>
+          </div>
+
+          <div class="calc-field calc-field--checkbox calc-field--span2">
+            <input type="checkbox" id="calc-podmurowka" name="podmurowka">
+            <label for="calc-podmurowka" style="margin:0;text-transform:none;font-size:15px;color:var(--color-text);">Podmurówka betonowa</label>
+          </div>
+
+        </div>
+      </form>
+
+      <!-- Wynik na żywo + formularz leada -->
+      <div class="calc-result">
+        <div class="calc-result__label">Cena orientacyjna</div>
+        <div class="calc-result__price" id="calc-total">— zł</div>
+        <div class="calc-result__note">Cena szacunkowa. Dokładną wycenę potwierdzimy po bezpłatnym pomiarze.</div>
+
+        <ul class="calc-result__breakdown" id="calc-breakdown">
+          <!-- wypełniane przez calculator.js -->
+        </ul>
+
+        <div class="calc-lead-form">
+          <form id="wycena-form" name="wycena" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="wycena">
+            <p class="visually-hidden">
+              <label>Nie wypełniaj, jeśli jesteś człowiekiem: <input name="bot-field"></label>
+            </p>
+            <input type="hidden" name="szacowana-cena" id="wycena-cena-hidden">
+
+            <div class="calc-lead-form__fields">
+              <label for="wycena-imie">Imię</label>
+              <input type="text" id="wycena-imie" name="imie" placeholder="Twoje imię" required>
+
+              <label for="wycena-telefon">Telefon</label>
+              <input type="tel" id="wycena-telefon" name="telefon" placeholder="Numer telefonu" required pattern="[0-9+ ]{7,15}">
+
+              <button type="submit" class="btn btn-cta btn-block">Otrzymaj dokładną wycenę w 24h</button>
+            </div>
+
+            <div class="calc-lead-form__success" id="wycena-success">
+              Dziękujemy! Skontaktujemy się w ciągu 24h z dokładną wyceną.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C240,60 480,0 720,20 C960,40 1200,10 1440,30 L1440,60 L0,60 Z" fill="var(--color-bg-alt)"/></svg>
+</div>
+
+<!-- ==========================================================================
+     3. PROBLEM -> ROZWIĄZANIE
+     ========================================================================== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Dlaczego my</span>
+      <h2>Koniec z czekaniem na wycenę</h2>
+      <p>U większości firm ogrodzeniowych cena to tajemnica do ostatniej rozmowy telefonicznej. My robimy to inaczej.</p>
+    </div>
+    <div class="compare">
+      <div class="card card--bad">
+        <h3>Typowa firma ogrodzeniowa</h3>
+        <ul>
+          <li>Cena „do ustalenia telefonicznie”</li>
+          <li>Trzeba czekać na oddzwonienie handlowca</li>
+          <li>Brak jasności co do terminu montażu</li>
+          <li>Zaskoczenia w kosztorysie na końcu</li>
+        </ul>
+      </div>
+      <div class="card card--good">
+        <h3>Mamino Ogrodzenia</h3>
+        <ul>
+          <li>Orientacyjną cenę widzisz od razu online</li>
+          <li>Dokładną wycenę potwierdzamy w 24h</li>
+          <li>Konkretny termin pomiaru i montażu</li>
+          <li>Przejrzysty kosztorys bez niespodzianek</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     4. TERMIN I PROCES
+     ========================================================================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Jak to wygląda</span>
+      <h2>Od zapytania do gotowego ogrodzenia</h2>
+      <p>Prosty proces w trzech krokach — bez zbędnych opóźnień.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__num">1</div>
+        <h3>Bezpłatny pomiar</h3>
+        <p>Umawiamy się na dogodny termin i mierzymy teren na miejscu, uwzględniając ukształtowanie działki.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <h3>Potwierdzona data</h3>
+        <p>Otrzymujesz konkretny termin montażu i ostateczną wycenę — na piśmie, bez ustnych obietnic.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <h3>Montaż na czas</h3>
+        <p>Ekipa montuje ogrodzenie w umówionym terminie, zgodnie z ustalonym zakresem prac.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     5. JAK MONTUJEMY
+     ========================================================================== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Jakość montażu</span>
+      <h2>Jak montujemy ogrodzenia panelowe</h2>
+      <p>Detale, które decydują o tym, że ogrodzenie stoi równo i prosto latami.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="card">
+        <div class="card__icon">📐</div>
+        <div>
+          <h4>Niwelator laserowy</h4>
+          <p>Wyznaczamy poziom i linię ogrodzenia niwelatorem laserowym, dzięki czemu panele stoją równo na całej długości.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__icon">⛰️</div>
+        <div>
+          <h4>Trudny teren</h4>
+          <p>Montujemy ogrodzenia również na działkach ze spadkiem i nierównym ukształtowaniem terenu.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🔩</div>
+        <div>
+          <h4>Solidne słupki</h4>
+          <p>Słupki osadzamy stabilnie, dobierając sposób montażu do rodzaju gruntu na działce.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card__icon">🛡️</div>
+        <div>
+          <h4>Gwarancja</h4>
+          <!-- TODO: dokładny okres i zakres gwarancji do potwierdzenia z klientem -->
+          <p>Udzielamy gwarancji na wykonany montaż. Szczegółowe warunki przekazujemy przy wycenie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     6. REALIZACJE
+     ========================================================================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Portfolio</span>
+      <h2>Nasze realizacje</h2>
+      <p>Przykłady ogrodzeń panelowych zamontowanych na płn. Mazowszu.</p>
+    </div>
+    <!-- TODO: zastąpić prawdziwymi zdjęciami realizacji (klient dostarczy) -->
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="assets/gallery-placeholder.svg" alt="Realizacja — ogrodzenie panelowe, antracyt"><span>Ciechanów — antracyt, 173 cm</span></div>
+      <div class="gallery-item"><img src="assets/gallery-placeholder.svg" alt="Realizacja — ogrodzenie panelowe z podmurówką"><span>Płońsk — z podmurówką</span></div>
+      <div class="gallery-item"><img src="assets/gallery-placeholder.svg" alt="Realizacja — ogrodzenie panelowe z bramą przesuwną"><span>Mława — brama przesuwna</span></div>
+      <div class="gallery-item"><img src="assets/gallery-placeholder.svg" alt="Realizacja — ogrodzenie panelowe na skarpie"><span>Pułtusk — teren ze spadkiem</span></div>
+      <div class="gallery-item"><img src="assets/gallery-placeholder.svg" alt="Realizacja — ogrodzenie panelowe zielone"><span>Nasielsk — kolor zielony</span></div>
+      <div class="gallery-item"><img src="assets/gallery-placeholder.svg" alt="Realizacja — ogrodzenie panelowe z furtką"><span>Przasnysz — furtka i brama dwuskrzydłowa</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     7. OPINIE
+     ========================================================================== -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Opinie klientów</span>
+      <h2>Co mówią o nas klienci</h2>
+      <p>4,8★ w 44 opiniach Google.</p>
+    </div>
+    <!--
+      TODO [MISSING]: poniższe cytaty i imiona to miejsca-wypełniacze.
+      Przed publikacją zastąpić prawdziwymi, autentycznymi opiniami z wizytówki
+      Google (kopiuj-wklej treść + imię/nazwisko autora, za jego zgodą).
+      Nie publikować fikcyjnych opinii jako prawdziwych.
+    -->
+    <div class="testimonials">
+      <div class="card testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p>„[TODO: wstawić prawdziwą opinię klienta z Google]”</p>
+        <div class="testimonial__name">Imię Nazwisko (TODO)</div>
+      </div>
+      <div class="card testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p>„[TODO: wstawić prawdziwą opinię klienta z Google]”</p>
+        <div class="testimonial__name">Imię Nazwisko (TODO)</div>
+      </div>
+      <div class="card testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p>„[TODO: wstawić prawdziwą opinię klienta z Google]”</p>
+        <div class="testimonial__name">Imię Nazwisko (TODO)</div>
+      </div>
+      <div class="card testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p>„[TODO: wstawić prawdziwą opinię klienta z Google]”</p>
+        <div class="testimonial__name">Imię Nazwisko (TODO)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     8. ZASIĘG
+     ========================================================================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Zasięg działania</span>
+      <h2>Montujemy na płn. Mazowszu</h2>
+      <!-- TODO: potwierdzić z klientem dokładną listę obsługiwanych miejscowości / promień dojazdu -->
+      <p>Poniżej przykładowa lista miejscowości w regionie — dokładny zasięg do potwierdzenia.</p>
+    </div>
+    <div class="city-list">
+      <span class="city-pill">Ciechanów</span>
+      <span class="city-pill">Płońsk</span>
+      <span class="city-pill">Mława</span>
+      <span class="city-pill">Pułtusk</span>
+      <span class="city-pill">Nasielsk</span>
+      <span class="city-pill">Maków Mazowiecki</span>
+      <span class="city-pill">Przasnysz</span>
+      <span class="city-pill">Żuromin</span>
+      <span class="city-pill">Sierpc</span>
+      <span class="city-pill">Ostrołęka</span>
+      <span class="city-pill">i okolice</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     9. FINALNE CTA
+     ========================================================================== -->
+<section class="section section--dark final-cta">
+  <div class="container">
+    <h2>Sprawdź cenę swojego ogrodzenia już teraz</h2>
+    <p>To zajmie 2 minuty — bez zobowiązań.</p>
+    <a href="#kalkulator" class="btn btn-cta" data-event="cta_final">Oblicz cenę ogrodzenia</a>
+    <div class="final-cta__phone">lub zadzwoń: <a href="tel:+48518784697">518 784 697</a></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Mamino Ogrodzenia — sprzedaż i montaż ogrodzeń panelowych, płn. Mazowsze</p>
+    <p><a href="tel:+48518784697">518 784 697</a></p>
+  </div>
+</footer>
+
+<script src="js/tracking.js"></script>
+<script src="js/calculator.js"></script>
+</body>
+</html>

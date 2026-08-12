@@ -1,0 +1,35 @@
+<!--
+  TODO: Zastąpić prawdziwym zdjęciem z montażu ogrodzenia (klient dostarczy).
+  Tymczasowa grafika poglądowa — stylizowany panel ogrodzeniowy w kolorach marki.
+-->
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2B2B28"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+    <pattern id="mesh" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="none"/>
+      <path d="M0 0 L40 40 M40 0 L0 40" stroke="#3a3a36" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#skyGrad)"/>
+  <rect y="560" width="1600" height="340" fill="#242420"/>
+  <g>
+    <!-- rows of fence panels, abstract representation -->
+    <g transform="translate(0,520)">
+      <rect x="40" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="200" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="360" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="520" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="680" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="840" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="1000" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="1160" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="1320" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="1480" y="0" width="4" height="180" fill="#4a4a44"/>
+      <rect x="44" y="10" width="1516" height="160" fill="url(#mesh)" opacity="0.7"/>
+    </g>
+  </g>
+  <circle cx="1380" cy="140" r="120" fill="#E9762B" opacity="0.15"/>
+</svg>
