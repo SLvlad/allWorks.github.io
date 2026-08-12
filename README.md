@@ -1,6 +1,4 @@
-# allWorks.github.io
-
-## Mamino Ogrodzenia — landing page
+# Mamino Ogrodzenia — landing page
 
 Statyczny landing page (HTML + CSS + vanilla JS) dla Mamino Ogrodzenia —
 sprzedaż i montaż ogrodzeń panelowych, płn. Mazowsze. Gotowy do wdrożenia na
