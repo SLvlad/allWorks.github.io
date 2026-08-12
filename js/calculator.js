@@ -99,6 +99,7 @@
 
   var pln = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
   var hasTrackedStart = false;
+  var isFirstRender = true;
 
   // ------------------------------------------------------------------------
   // Logika obliczeń
@@ -155,6 +156,14 @@
 
   function render(result) {
     totalEl.textContent = pln.format(round10(result.min)) + "–" + pln.format(round10(result.max)) + " zł";
+
+    // Krótki puls przy każdej zmianie ceny (poza pierwszym renderem przy wejściu na stronę).
+    if (!isFirstRender) {
+      totalEl.classList.remove("is-updated");
+      void totalEl.offsetWidth; // wymuś reflow, żeby animacja odpaliła się ponownie
+      totalEl.classList.add("is-updated");
+    }
+    isFirstRender = false;
 
     var rows = [
       ["Ogrodzenie (panele + montaż słupków)", result.fenceCost],

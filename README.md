@@ -13,6 +13,7 @@ mamino.html          — cała strona (9 sekcji: hero, kalkulator, ...)
 css/mamino.css       — zmienne kolorów/typografii z brand kitu, style sekcji
 js/calculator.js     — logika kalkulatora ceny + wysyłka formularza leada
 js/tracking.js       — wysyłka zdarzeń do dataLayer (GTM) i Meta Pixel
+js/animations.js     — cień nagłówka po scrollu + reveal-on-scroll (IntersectionObserver)
 assets/              — logo, tła SVG, placeholdery galerii
 netlify.toml         — konfiguracja deployu
 ```
@@ -61,6 +62,18 @@ potwierdzone ceny. Przed publikacją zastąp je realnym cennikiem:
 
 Reszta kodu kalkulatora nie wymaga zmian — liczy się automatycznie na
 podstawie tego obiektu.
+
+### Animacje
+
+Strona ma subtelne, automatyczne animacje: wejście treści hero przy
+załadowaniu, delikatny puls badge z gwiazdkami, "unoszenie się" fali między
+sekcjami, płynne pojawianie się kart/kroków/zdjęć przy scrollowaniu (reveal-
+on-scroll, `js/animations.js`) oraz puls ceny w kalkulatorze przy każdej
+zmianie parametrów. Mikro-interakcje na hover (przyciski, karty, galeria,
+pigułki miast) działają zawsze. Wszystkie automatyczne animacje są
+wyłączone, gdy użytkownik ma w systemie włączone „ogranicz animacje”
+(`prefers-reduced-motion: reduce`) — treść zostaje wtedy w pełni widoczna,
+tylko bez ruchu.
 
 ### Do uzupełnienia przed publikacją
 
