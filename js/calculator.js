@@ -91,6 +91,8 @@
     podmurowka: document.getElementById("calc-podmurowka")
   };
 
+  var lengthSlider = document.getElementById("calc-length-slider");
+
   var totalEl = document.getElementById("calc-total");
   var breakdownEl = document.getElementById("calc-breakdown");
   var leadForm = document.getElementById("wycena-form");
@@ -185,6 +187,39 @@
 
   function recalculate() {
     render(calculate(readState()));
+  }
+
+  // ------------------------------------------------------------------------
+  // Suwak długości ogrodzenia — dwukierunkowa synchronizacja z polem liczbowym
+  // ------------------------------------------------------------------------
+  function updateSliderFill(slider) {
+    var min = parseFloat(slider.min) || 0;
+    var max = parseFloat(slider.max) || 100;
+    var val = parseFloat(slider.value) || 0;
+    var pct = ((val - min) / (max - min)) * 100;
+    slider.style.background =
+      "linear-gradient(to right, var(--color-cta) 0%, var(--color-cta) " +
+      pct + "%, var(--color-border) " + pct + "%, var(--color-border) 100%)";
+  }
+
+  if (lengthSlider) {
+    updateSliderFill(lengthSlider);
+
+    lengthSlider.addEventListener("input", function () {
+      fields.length.value = lengthSlider.value;
+      updateSliderFill(lengthSlider);
+      if (!hasTrackedStart && window.maminoTrack) {
+        window.maminoTrack("calc_start", { field: "length" });
+        hasTrackedStart = true;
+      }
+      recalculate();
+    });
+
+    fields.length.addEventListener("input", function () {
+      if (fields.length.value === "") return;
+      lengthSlider.value = fields.length.value;
+      updateSliderFill(lengthSlider);
+    });
   }
 
   // ------------------------------------------------------------------------
