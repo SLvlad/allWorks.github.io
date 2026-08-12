@@ -56,12 +56,18 @@ potwierdzone ceny. Przed publikacją zastąp je realnym cennikiem:
 - `basePricePerMb` — cena bazowa zł/mb (103 cm, drut 4 mm, słupek 1,5 mm)
 - `heightMultiplier`, `wireMultiplier`, `postMultiplier` — mnożniki ceny/mb
 - `colorSurchargePerMb` — dopłata za kolor
-- `podmurowkaPerMb` — dopłata za podmurówkę
-- `furtkaPrice`, `bramaPrice` — ceny za sztukę
-- `option` — koszt dostawy/montażu/odbioru własnego
+- `podmurowkaPerMb` — dopłata za podmurówkę systemową
+- `furtkaPrice` — cena za sztukę furtki
+- `bramaPrice` — cena za bramę (dwuskrzydłową / przesuwną; brak bramy = 0 zł)
+- `option` — dopłata/koszt za montaż przez ekipę vs. tylko materiał
 
 Reszta kodu kalkulatora nie wymaga zmian — liczy się automatycznie na
 podstawie tego obiektu.
+
+Kalkulator zakłada maksymalnie jedną bramę na wycenę (wybór typu w polu
+„Brama” obejmuje już brak/dwuskrzydłową/przesuwną). Jeśli klient potrzebuje
+wyceniać więcej niż jedną bramę, trzeba rozbudować to pole o osobną liczbę
+sztuk — jak wcześniej przy furtce.
 
 ### Animacje
 

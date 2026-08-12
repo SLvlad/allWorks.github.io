@@ -48,28 +48,23 @@
       czarny: 5    // TODO: podtwierdzić w kliencie
     },
 
-    // Dopłata do mb za podmurówkę betonową.
+    // Dopłata do mb za podmurówkę systemową.
     podmurowkaPerMb: 25, // zł/mb // TODO: podtwierdzić w kliencie
 
     // Cena za sztukę furtki.
     furtkaPrice: 350, // zł/szt. // TODO: podtwierdzić w kliencie
 
-    // Cena za sztukę bramy, w zależności od typu.
+    // Cena za bramę, w zależności od typu ("brak" celowo pominięty = 0 zł).
     bramaPrice: {
-      dwuskrzydlowa: 1800, // zł/szt. // TODO: podtwierdzić w kliencie
-      przesuwna: 2600      // zł/szt. // TODO: podtwierdzić w kliencie
+      dwuskrzydlowa: 1800, // zł // TODO: podtwierdzić w kliencie
+      przesuwna: 2600      // zł // TODO: podtwierdzić w kliencie
     },
 
-    // Dostawa / montaż / odbiór własny.
+    // Montaż przez ekipę / tylko materiał (klient montuje we własnym zakresie).
     option: {
-      montaz: { label: "Dostawa + montaż", flatFee: 0, perMb: 15 },   // TODO: podtwierdzić w kliencie
-      dostawa: { label: "Tylko dostawa", flatFee: 200, perMb: 0 },     // TODO: podtwierdzić w kliencie
-      odbior: { label: "Odbiór własny", flatFee: 0, perMb: 0 }
-    },
-
-    // Widełki „ceny orientacyjnej” pokazywane użytkownikowi (± od wyliczonej sumy).
-    estimateRangeMin: 0.95,
-    estimateRangeMax: 1.1
+      montaz: { label: "Z montażem", flatFee: 0, perMb: 15 },      // TODO: podtwierdzić w kliencie
+      material: { label: "Tylko materiał", flatFee: 0, perMb: 0 } // TODO: podtwierdzić w kliencie (czy doliczać dostawę?)
+    }
   };
 
   // ------------------------------------------------------------------------
@@ -80,18 +75,13 @@
 
   var fields = {
     length: document.getElementById("calc-length"),
-    height: document.getElementById("calc-height"),
-    color: document.getElementById("calc-color"),
-    wire: document.getElementById("calc-wire"),
-    post: document.getElementById("calc-post"),
     gateCount: document.getElementById("calc-gate-count"),
-    option: document.getElementById("calc-option"),
-    bramaCount: document.getElementById("calc-brama-count"),
-    bramaType: document.getElementById("calc-brama-type"),
-    podmurowka: document.getElementById("calc-podmurowka")
+    brama: document.getElementById("calc-brama")
   };
 
   var lengthSlider = document.getElementById("calc-length-slider");
+  var pillGroups = document.querySelectorAll(".calc-pills");
+  var pillState = {};
 
   var totalEl = document.getElementById("calc-total");
   var breakdownEl = document.getElementById("calc-breakdown");
@@ -103,21 +93,26 @@
   var hasTrackedStart = false;
   var isFirstRender = true;
 
+  function trackStart(field) {
+    if (hasTrackedStart || !window.maminoTrack) return;
+    window.maminoTrack("calc_start", { field: field });
+    hasTrackedStart = true;
+  }
+
   // ------------------------------------------------------------------------
   // Logika obliczeń
   // ------------------------------------------------------------------------
   function readState() {
     return {
       length: Math.max(0, parseFloat(fields.length.value) || 0),
-      height: fields.height.value,
-      color: fields.color.value,
-      wire: fields.wire.value,
-      post: fields.post.value,
+      height: pillState.height,
+      color: pillState.color,
+      wire: pillState.wire,
+      post: pillState.post,
+      podmurowka: pillState.podmurowka === "true",
+      option: pillState.option,
       gateCount: Math.max(0, parseInt(fields.gateCount.value, 10) || 0),
-      option: fields.option.value,
-      bramaCount: Math.max(0, parseInt(fields.bramaCount.value, 10) || 0),
-      bramaType: fields.bramaType.value,
-      podmurowka: !!fields.podmurowka.checked
+      brama: fields.brama.value // "brak" | "dwuskrzydlowa" | "przesuwna"
     };
   }
 
@@ -134,21 +129,15 @@
 
     var fenceCost = perMb * state.length;
     var gatesCost = state.gateCount * PRICING.furtkaPrice;
-    var bramaUnitPrice = PRICING.bramaPrice[state.bramaType] || 0;
-    var bramaCost = state.bramaCount * bramaUnitPrice;
+    var bramaCost = PRICING.bramaPrice[state.brama] || 0;
     var deliveryFlat = optionCfg.flatFee;
 
     var total = fenceCost + gatesCost + bramaCost + deliveryFlat;
 
     return {
       perMb: perMb,
-      fenceCost: fenceCost,
-      gatesCost: gatesCost,
-      bramaCost: bramaCost,
-      deliveryFlat: deliveryFlat,
       total: total,
-      min: total * PRICING.estimateRangeMin,
-      max: total * PRICING.estimateRangeMax
+      state: state
     };
   }
 
@@ -157,7 +146,8 @@
   }
 
   function render(result) {
-    totalEl.textContent = pln.format(round10(result.min)) + "–" + pln.format(round10(result.max)) + " zł";
+    var priceRounded = round10(result.total);
+    totalEl.textContent = pln.format(priceRounded) + " zł";
 
     // Krótki puls przy każdej zmianie ceny (poza pierwszym renderem przy wejściu na stronę).
     if (!isFirstRender) {
@@ -167,27 +157,44 @@
     }
     isFirstRender = false;
 
-    var rows = [
-      ["Ogrodzenie (panele + montaż słupków)", result.fenceCost],
-      ["Furtki", result.gatesCost],
-      ["Brama", result.bramaCost],
-      ["Dostawa", result.deliveryFlat]
-    ];
-
-    breakdownEl.innerHTML = rows
-      .map(function (row) {
-        return "<li><span>" + row[0] + "</span><span>" + pln.format(round10(row[1])) + " zł</span></li>";
-      })
-      .join("");
+    breakdownEl.textContent =
+      pln.format(Math.round(result.perMb)) + " zł/mb · " +
+      result.state.length + " mb · " +
+      result.state.height + " cm · drut " + result.state.wire + " mm";
 
     if (leadPriceHidden) {
-      leadPriceHidden.value = pln.format(round10(result.min)) + "-" + pln.format(round10(result.max)) + " zł";
+      leadPriceHidden.value = pln.format(priceRounded) + " zł";
     }
   }
 
   function recalculate() {
     render(calculate(readState()));
   }
+
+  // ------------------------------------------------------------------------
+  // Pigułki wyboru (wysokość, grubość drutu/słupka, kolor, podmurówka, montaż)
+  // ------------------------------------------------------------------------
+  pillGroups.forEach(function (group) {
+    var field = group.getAttribute("data-field");
+    var active = group.querySelector(".calc-pill.is-active");
+    pillState[field] = active ? active.getAttribute("data-value") : null;
+
+    group.addEventListener("click", function (e) {
+      var btn = e.target.closest(".calc-pill");
+      if (!btn || btn.classList.contains("is-active")) return;
+
+      group.querySelectorAll(".calc-pill").forEach(function (p) {
+        p.classList.remove("is-active");
+        p.setAttribute("aria-pressed", "false");
+      });
+      btn.classList.add("is-active");
+      btn.setAttribute("aria-pressed", "true");
+      pillState[field] = btn.getAttribute("data-value");
+
+      trackStart(field);
+      recalculate();
+    });
+  });
 
   // ------------------------------------------------------------------------
   // Suwak długości ogrodzenia — dwukierunkowa synchronizacja z polem liczbowym
@@ -208,10 +215,7 @@
     lengthSlider.addEventListener("input", function () {
       fields.length.value = lengthSlider.value;
       updateSliderFill(lengthSlider);
-      if (!hasTrackedStart && window.maminoTrack) {
-        window.maminoTrack("calc_start", { field: "length" });
-        hasTrackedStart = true;
-      }
+      trackStart("length");
       recalculate();
     });
 
@@ -223,17 +227,14 @@
   }
 
   // ------------------------------------------------------------------------
-  // Zdarzenia: przeliczanie na żywo + calc_start
+  // Zdarzenia: przeliczanie na żywo + calc_start (pole liczbowe + selecty)
   // ------------------------------------------------------------------------
   Object.keys(fields).forEach(function (key) {
     var el = fields[key];
     if (!el) return;
-    var evt = el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input";
+    var evt = el.tagName === "SELECT" ? "change" : "input";
     el.addEventListener(evt, function () {
-      if (!hasTrackedStart && window.maminoTrack) {
-        window.maminoTrack("calc_start", { field: key });
-        hasTrackedStart = true;
-      }
+      trackStart(key);
       recalculate();
     });
   });

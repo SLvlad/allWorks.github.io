@@ -67,96 +67,104 @@
         <div class="calc-grid">
 
           <div class="calc-field calc-field--span2 calc-field--length">
-            <label for="calc-length">Długość ogrodzenia (mb)</label>
+            <label for="calc-length"><span class="calc-num">1</span> Długość ogrodzenia</label>
             <div class="calc-length-row">
-              <input type="number" id="calc-length" name="length" min="1" max="200" step="1" value="30" inputmode="numeric">
-              <input type="range" id="calc-length-slider" min="1" max="200" step="1" value="30" class="calc-slider" aria-label="Długość ogrodzenia w mb" aria-hidden="false">
+              <div class="calc-length-input">
+                <input type="number" id="calc-length" name="length" min="1" max="200" step="1" value="30" inputmode="numeric">
+                <span class="calc-length-unit">mb</span>
+              </div>
+              <input type="range" id="calc-length-slider" min="1" max="200" step="1" value="30" class="calc-slider" aria-label="Długość ogrodzenia w mb">
+            </div>
+          </div>
+
+          <div class="calc-field calc-field--span2">
+            <span class="calc-field__label"><span class="calc-num">2</span> Wysokość panelu</span>
+            <div class="calc-pills" data-field="height" role="group" aria-label="Wysokość panelu">
+              <button type="button" class="calc-pill is-active" data-value="103" aria-pressed="true">103 cm</button>
+              <button type="button" class="calc-pill" data-value="123" aria-pressed="false">123 cm</button>
+              <button type="button" class="calc-pill" data-value="143" aria-pressed="false">143 cm</button>
+              <button type="button" class="calc-pill" data-value="153" aria-pressed="false">153 cm</button>
+              <button type="button" class="calc-pill" data-value="173" aria-pressed="false">173 cm</button>
             </div>
           </div>
 
           <div class="calc-field">
-            <label for="calc-height">Wysokość</label>
-            <select id="calc-height" name="height">
-              <option value="103">103 cm</option>
-              <option value="123">123 cm</option>
-              <option value="143">143 cm</option>
-              <option value="153">153 cm</option>
-              <option value="173">173 cm</option>
-            </select>
+            <span class="calc-field__label"><span class="calc-num">3</span> Grubość drutu</span>
+            <div class="calc-pills" data-field="wire" role="group" aria-label="Grubość drutu">
+              <button type="button" class="calc-pill is-active" data-value="4" aria-pressed="true">4 mm</button>
+              <button type="button" class="calc-pill" data-value="5" aria-pressed="false">5 mm</button>
+            </div>
           </div>
 
           <div class="calc-field">
-            <label for="calc-color">Kolor</label>
-            <select id="calc-color" name="color">
-              <option value="antracyt">Antracyt / grafit</option>
-              <option value="zielony">Zielony</option>
-              <option value="czarny">Czarny</option>
-            </select>
+            <span class="calc-field__label"><span class="calc-num">4</span> Grubość słupka</span>
+            <div class="calc-pills" data-field="post" role="group" aria-label="Grubość słupka">
+              <button type="button" class="calc-pill is-active" data-value="1.5" aria-pressed="true">1,5 mm</button>
+              <button type="button" class="calc-pill" data-value="2" aria-pressed="false">2 mm</button>
+            </div>
+          </div>
+
+          <div class="calc-field calc-field--span2">
+            <span class="calc-field__label"><span class="calc-num">5</span> Kolor</span>
+            <div class="calc-pills" data-field="color" role="group" aria-label="Kolor">
+              <button type="button" class="calc-pill is-active" data-value="antracyt" aria-pressed="true">Antracyt / grafit</button>
+              <button type="button" class="calc-pill" data-value="zielony" aria-pressed="false">Zielony</button>
+              <button type="button" class="calc-pill" data-value="czarny" aria-pressed="false">Czarny</button>
+            </div>
           </div>
 
           <div class="calc-field">
-            <label for="calc-wire">Grubość drutu</label>
-            <select id="calc-wire" name="wire">
-              <option value="4">4 mm</option>
-              <option value="5">5 mm</option>
-            </select>
+            <span class="calc-field__label"><span class="calc-num">6</span> Podmurówka</span>
+            <div class="calc-pills" data-field="podmurowka" role="group" aria-label="Podmurówka">
+              <button type="button" class="calc-pill is-active" data-value="false" aria-pressed="true">Bez podmurówki</button>
+              <button type="button" class="calc-pill" data-value="true" aria-pressed="false">Podmurówka systemowa</button>
+            </div>
           </div>
 
           <div class="calc-field">
-            <label for="calc-post">Grubość słupka</label>
-            <select id="calc-post" name="post">
-              <option value="1.5">1,5 mm</option>
-              <option value="2">2 mm</option>
-            </select>
+            <span class="calc-field__label"><span class="calc-num">7</span> Montaż</span>
+            <div class="calc-pills" data-field="option" role="group" aria-label="Montaż">
+              <button type="button" class="calc-pill is-active" data-value="montaz" aria-pressed="true">Z montażem</button>
+              <button type="button" class="calc-pill" data-value="material" aria-pressed="false">Tylko materiał</button>
+            </div>
           </div>
 
-          <div class="calc-field">
-            <label for="calc-gate-count">Furtka (szt.)</label>
-            <input type="number" id="calc-gate-count" name="gateCount" min="0" step="1" value="0">
-          </div>
-
-          <div class="calc-field">
-            <label for="calc-option">Dostawa / montaż</label>
-            <select id="calc-option" name="option">
-              <option value="montaz">Dostawa + montaż</option>
-              <option value="dostawa">Tylko dostawa</option>
-              <option value="odbior">Odbiór własny</option>
-            </select>
-          </div>
-
-          <div class="calc-field">
-            <label for="calc-brama-count">Brama (szt.)</label>
-            <input type="number" id="calc-brama-count" name="bramaCount" min="0" step="1" value="0">
-          </div>
-
-          <div class="calc-field">
-            <label for="calc-brama-type">Typ bramy</label>
-            <select id="calc-brama-type" name="bramaType">
-              <option value="dwuskrzydlowa">Dwuskrzydłowa</option>
-              <option value="przesuwna">Przesuwna</option>
-            </select>
-          </div>
-
-          <div class="calc-field calc-field--checkbox calc-field--span2">
-            <input type="checkbox" id="calc-podmurowka" name="podmurowka">
-            <label for="calc-podmurowka" style="margin:0;text-transform:none;font-size:15px;color:var(--color-text);">Podmurówka betonowa</label>
+          <div class="calc-field calc-field--span2">
+            <span class="calc-field__label"><span class="calc-num">8</span> Furtki i bramy</span>
+            <div class="calc-subgrid">
+              <div class="calc-subfield">
+                <label for="calc-gate-count">Furtka</label>
+                <select id="calc-gate-count" name="gateCount">
+                  <option value="0">Bez furtki</option>
+                  <option value="1">1 furtka</option>
+                  <option value="2">2 furtki</option>
+                  <option value="3">3 furtki</option>
+                </select>
+              </div>
+              <div class="calc-subfield">
+                <label for="calc-brama">Brama</label>
+                <select id="calc-brama" name="brama">
+                  <option value="brak">Bez bramy</option>
+                  <option value="dwuskrzydlowa">Brama dwuskrzydłowa</option>
+                  <option value="przesuwna">Brama przesuwna</option>
+                </select>
+              </div>
+            </div>
           </div>
 
         </div>
       </form>
 
       <!-- Wynik na żywo + formularz leada -->
-      <div class="calc-result">
-        <div class="calc-result__label">Cena orientacyjna</div>
-        <div class="calc-result__price" id="calc-total">— zł</div>
-        <div class="calc-result__note">Cena szacunkowa. Dokładną wycenę potwierdzimy po bezpłatnym pomiarze.</div>
+      <div class="calc-result-col">
+        <div class="calc-result">
+          <div class="calc-result__label">Twoja cena</div>
+          <div class="calc-result__price" id="calc-total">— zł</div>
+          <div class="calc-result__breakdown" id="calc-breakdown"><!-- wypełniane przez calculator.js --></div>
 
-        <ul class="calc-result__breakdown" id="calc-breakdown">
-          <!-- wypełniane przez calculator.js -->
-        </ul>
+          <form id="wycena-form" class="calc-lead-form" name="wycena" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <p class="calc-lead-form__intro">Zostaw numer, oddzwaniamy z dokładną wyceną po pomiarze.</p>
 
-        <div class="calc-lead-form">
-          <form id="wycena-form" name="wycena" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="wycena">
             <p class="visually-hidden">
               <label>Nie wypełniaj, jeśli jesteś człowiekiem: <input name="bot-field"></label>
@@ -164,13 +172,11 @@
             <input type="hidden" name="szacowana-cena" id="wycena-cena-hidden">
 
             <div class="calc-lead-form__fields">
-              <label for="wycena-imie">Imię</label>
-              <input type="text" id="wycena-imie" name="imie" placeholder="Twoje imię" required>
-
-              <label for="wycena-telefon">Telefon</label>
-              <input type="tel" id="wycena-telefon" name="telefon" placeholder="Numer telefonu" required pattern="[0-9+ ]{7,15}">
+              <input type="text" id="wycena-imie" name="imie" placeholder="Jan" aria-label="Imię" required>
+              <input type="tel" id="wycena-telefon" name="telefon" placeholder="500 000 000" aria-label="Telefon" required pattern="[0-9+ ]{7,15}">
 
               <button type="submit" class="btn btn-cta btn-block">Otrzymaj dokładną wycenę w 24h</button>
+              <p class="calc-lead-form__hint">Dzwonimy wyłącznie w sprawie wyceny.</p>
             </div>
 
             <div class="calc-lead-form__success" id="wycena-success">
@@ -178,6 +184,8 @@
             </div>
           </form>
         </div>
+
+        <div class="calc-disclaimer">Wynik kalkulatora jest orientacyjny. Cena końcowa wynika z pomiaru na miejscu.</div>
       </div>
     </div>
   </div>
