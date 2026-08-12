@@ -9,8 +9,8 @@ Netlify, bez backendu (leady zbiera Netlify Forms).
 ### Struktura plików
 
 ```
-index.html          — cała strona (9 sekcji: hero, kalkulator, ...)
-css/styles.css       — zmienne kolorów/typografii z brand kitu, style sekcji
+mamino.html          — cała strona (9 sekcji: hero, kalkulator, ...)
+css/mamino.css       — zmienne kolorów/typografii z brand kitu, style sekcji
 js/calculator.js     — logika kalkulatora ceny + wysyłka formularza leada
 js/tracking.js       — wysyłka zdarzeń do dataLayer (GTM) i Meta Pixel
 assets/              — logo, tła SVG, placeholdery galerii
@@ -21,10 +21,15 @@ netlify.toml         — konfiguracja deployu
 
 1. Połącz repozytorium z Netlify (branch `claude/mamino-ogrodzenia-landing-uf45d1`
    lub branch docelowy po scaleniu) — build command: brak, publish directory: `.`
-2. Po pierwszym deployu w panelu Netlify → **Forms** pojawi się formularz
+2. Strona nie jest plikiem `index.html`, więc pod adresem głównym domeny
+   (`/`) Netlify pokaże domyślny 404, dopóki nie dodasz przekierowania lub
+   nie zmienisz nazwy pliku na `index.html`. Otwórz `netlify.toml`, jeśli
+   chcesz, by `mamino.html` był stroną główną — dodaj tam redirect `/ -> /mamino.html`.
+   W międzyczasie strona działa pod bezpośrednim adresem `/mamino.html`.
+3. Po pierwszym deployu w panelu Netlify → **Forms** pojawi się formularz
    `wycena` — tam trafiają leady (imię + telefon + orientacyjna cena).
    Można podpiąć powiadomienia e-mail/Slack w ustawieniach formularza.
-3. Podmień treści oznaczone `TODO` / `[MISSING]` w `index.html` przed
+4. Podmień treści oznaczone `TODO` / `[MISSING]` w `mamino.html` przed
    publikacją (patrz sekcja "Do uzupełnienia przed publikacją" niżej).
 
 ### Jak wstawić prawdziwy Meta Pixel ID
@@ -59,7 +64,7 @@ podstawie tego obiektu.
 
 ### Do uzupełnienia przed publikacją
 
-W `index.html` oznaczono komentarzami `TODO` / `[MISSING]` miejsca, których
+W `mamino.html` oznaczono komentarzami `TODO` / `[MISSING]` miejsca, których
 **nie wolno było wypełnić wymyślonymi faktami**:
 
 - Sekcja **Opinie** — cytaty i imiona to placeholdery. Trzeba wstawić
