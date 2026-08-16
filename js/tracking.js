@@ -7,18 +7,25 @@
 (function () {
   "use strict";
 
-  // TODO: wstawić prawdziwy Meta Pixel ID przy deployu (np. "1234567890123456").
+  // KROK 1: wstaw prawdziwy Meta Pixel ID (np. "1234567890123456").
   var PIXEL_ID = "PIXEL_ID";
 
-  // --- Meta Pixel bootstrap -------------------------------------------------
-  // Odkomentować poniższy blok i wstawić prawdziwy PIXEL_ID, aby aktywować
-  // realne śledzenie Meta Pixel. Zostawione wyłączone, dopóki PIXEL_ID
-  // jest placeholderem, żeby nie wysyłać zdarzeń pod fałszywym ID.
+  // KROK 2: odkomentuj CAŁY blok poniżej (zaznacz i usuń "// " z każdej linii).
+  // Nic więcej nie trzeba zmieniać: funkcja track() poniżej automatycznie
+  // wyśle wszystkie zdarzenia do fbq, gdy tylko Pixel będzie zainicjowany,
+  // a PIXEL_ID nie będzie już placeholderem "PIXEL_ID".
   //
-  // !function(f,b,e,v,n,t,s){...}(window, document,'script',
-  // 'https://connect.facebook.net/en_US/fbevents.js');
-  // fbq('init', PIXEL_ID);
-  // fbq('track', 'PageView');
+  // !(function (f, b, e, v, n, t, s) {
+  //   if (f.fbq) return; n = f.fbq = function () {
+  //     n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+  //   };
+  //   if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0";
+  //   n.queue = []; t = b.createElement(e); t.async = !0;
+  //   t.src = v; s = b.getElementsByTagName(e)[0];
+  //   s.parentNode.insertBefore(t, s);
+  // })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+  // fbq("init", PIXEL_ID);
+  // fbq("track", "PageView");
 
   window.dataLayer = window.dataLayer || [];
 

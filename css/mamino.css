@@ -6,17 +6,17 @@
    ========================================================================== */
 
 :root {
-  /* --- Kolory marki --- */
-  --color-ink: #1A1A1A;          /* główny ciemny (tekst, nagłówki, tło hero) */
-  --color-ink-soft: #2B2B28;     /* ciemne tło sekcji alternatywnych */
+  /* --- Kolory marki (paleta Mamino: chłodna, miętowa) --- */
+  --color-ink: #070707;          /* nagłówki na jasnym tle + ciemne sekcje (hero, wynik) */
+  --color-ink-soft: #000000;     /* najciemniejsze tło (stopka) */
   --color-bg: #FFFFFF;           /* tło podstawowe */
-  --color-bg-alt: #F5F3EF;       /* tło naprzemienne (ciepła biel) */
-  --color-border: #E4E1DA;       /* linie / obramowania płaskich kart */
-  --color-text: #232320;
+  --color-bg-alt: #F5FFF5;       /* tło naprzemienne (miętowe) */
+  --color-border: #EBEBEB;       /* linie / obramowania płaskich kart */
+  --color-text: #333333;         /* tekst główny */
   --color-text-muted: #6B6B66;
-  --color-text-on-dark: #F5F3EF;
+  --color-text-on-dark: #FFFFFF;
 
-  --color-cta: #E9762B;          /* główny kolor CTA */
+  --color-cta: #E9762B;          /* główny kolor CTA (bez zmian) */
   --color-cta-hover: #D2661F;
   --color-cta-ink: #FFFFFF;
 
@@ -30,7 +30,7 @@
   /* --- Layout --- */
   --container-max: 1180px;
   --radius-pill: 999px;
-  --radius-card: 4px;
+  --radius-card: 12px;           /* płaskie karty, radius 12px wg brand kit */
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
@@ -249,7 +249,10 @@ p { margin: 0 0 var(--space-2); }
 .hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(26,26,26,0.55) 0%, rgba(26,26,26,0.85) 100%);
+  /* mocniejsze przyciemnienie: jasne zdjęcie realizacji + biały tekst */
+  background:
+    linear-gradient(180deg, rgba(7,7,7,0.60) 0%, rgba(7,7,7,0.80) 100%),
+    linear-gradient(90deg, rgba(7,7,7,0.55) 0%, rgba(7,7,7,0.15) 70%);
 }
 
 .hero .container {
@@ -621,6 +624,41 @@ p { margin: 0 0 var(--space-2); }
   text-align: center;
 }
 
+/* Mini-pasek zaufania nad przyciskiem (dyskretny, nie konkuruje z CTA) */
+.trust-bar {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 0;
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-accent);
+  font-size: 12px;
+  color: #C9C7BF;
+}
+
+.trust-bar li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trust-bar li + li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.trust-bar li + li::before {
+  content: "·";
+  position: absolute;
+  left: 2px;
+  color: #6f6e68;
+}
+
+.trust-bar__star {
+  color: var(--color-cta);
+}
+
 .calc-lead-form label {
   font-family: var(--font-accent);
   font-size: 13px;
@@ -741,14 +779,39 @@ p { margin: 0 0 var(--space-2); }
 
 .feature-grid .card__icon {
   flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-pill);
-  background: var(--color-bg-alt);
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;                    /* zaokrąglona kolorowa plakietka */
+  background: rgba(233, 118, 43, 0.12);   /* tint CTA */
+  color: var(--color-cta);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+}
+
+.feature-grid .card__icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Cytat-dowód przy claimie (np. niwelator laserowy) */
+.feature-quote {
+  margin: var(--space-2) 0 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--color-cta);
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.feature-quote cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-family: var(--font-accent);
+  font-size: 13px;
+  color: var(--color-ink);
 }
 
 /* ==========================================================================
@@ -773,6 +836,29 @@ p { margin: 0 0 var(--space-2); }
   height: 260px;
   object-fit: cover;              /* jednolite proporcje kafelków */
   display: block;
+}
+
+/* Osobny kadr pod galerią (inny produkt: brama przesuwna / profile poziome) */
+.gallery-feature {
+  margin: var(--space-3) 0 0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.gallery-feature img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-feature figcaption {
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-accent);
+  font-size: 14px;
+  color: var(--color-text-muted);
 }
 
 /* ==========================================================================

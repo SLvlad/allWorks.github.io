@@ -2,15 +2,9 @@
   publish = "."
   command = ""
 
-# Statyczna strona bez kroku budowania — Netlify wykrywa formularz "wycena"
-# w mamino.html automatycznie dzięki atrybutowi data-netlify="true".
-#
-# Strona nie nazywa się index.html, więc pod "/" Netlify pokaże domyślny 404.
-# Odkomentuj poniższy redirect, jeśli mamino.html ma być stroną główną:
-# [[redirects]]
-#   from = "/"
-#   to = "/mamino.html"
-#   status = 200
+# Statyczna strona bez kroku budowania. Strona główna to index.html, więc
+# działa pod "/" bez żadnych przekierowań. Netlify wykrywa formularz "wycena"
+# w index.html automatycznie dzięki atrybutowi data-netlify="true".
 
 [[headers]]
   for = "/*"

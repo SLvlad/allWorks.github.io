@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mamino Ogrodzenia — wycena ogrodzenia panelowego online w 2 minuty</title>
-<meta name="description" content="Ogrodzenia panelowe — sprzedaż i montaż w płn. Mazowszu. Policz orientacyjną cenę online i otrzymaj dokładną wycenę w 24h.">
+<title>Mamino Ogrodzenia. Wycena ogrodzenia panelowego online w 2 minuty</title>
+<meta name="description" content="Ogrodzenia panelowe, sprzedaż i montaż w płn. Mazowszu. Policz orientacyjną cenę online i otrzymaj dokładną wycenę w 24h.">
 
 <!-- Google Fonts: Bebas Neue / Lato / Questrial (zgodnie z brand kit) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
      1. HERO
      ========================================================================== -->
 <section class="hero" id="top">
-  <img src="assets/hero-bg.svg" alt="" class="hero__bg">
+  <img src="assets/realizacje-1.webp" alt="" class="hero__bg">
   <div class="hero__scrim"></div>
   <div class="container">
     <div class="hero__badge">
@@ -42,11 +42,11 @@
       <span>4,8★ w 44 opiniach Google</span>
     </div>
     <h1>Poznaj cenę swojego ogrodzenia w 2 minuty</h1>
-    <p class="lead">Podaj kilka parametrów i zobacz orientacyjną cenę ogrodzenia panelowego od razu na ekranie — bez czekania na telefon od handlowca.</p>
+    <p class="lead">Podaj kilka parametrów i zobacz orientacyjną cenę ogrodzenia panelowego od razu na ekranie, bez czekania na telefon od handlowca.</p>
     <div class="hero__actions">
       <a href="#kalkulator" class="btn btn-cta" data-event="cta_hero">Oblicz cenę ogrodzenia</a>
     </div>
-    <p class="hero__hint">Bezpłatnie · Bez zobowiązań · Wynik widzisz od razu na ekranie</p>
+    <p class="hero__hint">Wynik od razu, bez zobowiązań</p>
   </div>
 </section>
 
@@ -58,7 +58,7 @@
     <div class="section-head">
       <span class="eyebrow">Kalkulator</span>
       <h2>Ile będzie kosztować Twoje ogrodzenie?</h2>
-      <p>Wpisz parametry swojego ogrodzenia — cena aktualizuje się na żywo.</p>
+      <p>Wpisz parametry swojego ogrodzenia, a cena aktualizuje się na żywo.</p>
     </div>
 
     <div class="calculator__wrap">
@@ -167,7 +167,7 @@
       <div class="calc-result-col">
         <div class="calc-result">
           <div class="calc-result__label">Twoja cena</div>
-          <div class="calc-result__price" id="calc-total">— zł</div>
+          <div class="calc-result__price" id="calc-total">0 zł</div>
           <div class="calc-result__breakdown" id="calc-breakdown"><!-- wypełniane przez calculator.js --></div>
 
           <form id="wycena-form" class="calc-lead-form" name="wycena" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -182,6 +182,13 @@
             <div class="calc-lead-form__fields">
               <input type="text" id="wycena-imie" name="imie" placeholder="Jan" aria-label="Imię" required>
               <input type="tel" id="wycena-telefon" name="telefon" placeholder="500 000 000" aria-label="Telefon" required pattern="[0-9+ ]{7,15}">
+
+              <ul class="trust-bar" aria-label="Dlaczego warto">
+                <li><span class="trust-bar__star">★</span> 4,8</li>
+                <li>44 opinie Google</li>
+                <li>Bezpłatny pomiar</li>
+                <li>Gwarancja</li>
+              </ul>
 
               <button type="submit" class="btn btn-cta btn-block">Otrzymaj dokładną wycenę w 24h</button>
               <p class="calc-lead-form__hint">Dzwonimy wyłącznie w sprawie wyceny.</p>
@@ -244,7 +251,7 @@
     <div class="section-head">
       <span class="eyebrow">Jak to wygląda</span>
       <h2>Od zapytania do gotowego ogrodzenia</h2>
-      <p>Prosty proces w trzech krokach — bez zbędnych opóźnień.</p>
+      <p>Prosty proces w trzech krokach, bez zbędnych opóźnień.</p>
     </div>
     <div class="steps">
       <div class="step">
@@ -255,7 +262,7 @@
       <div class="step">
         <div class="step__num">2</div>
         <h3>Potwierdzona data</h3>
-        <p>Otrzymujesz konkretny termin montażu i ostateczną wycenę — na piśmie, bez ustnych obietnic.</p>
+        <p>Otrzymujesz konkretny termin montażu i ostateczną wycenę na piśmie, bez ustnych obietnic.</p>
       </div>
       <div class="step">
         <div class="step__num">3</div>
@@ -278,28 +285,54 @@
     </div>
     <div class="feature-grid">
       <div class="card">
-        <div class="card__icon">📐</div>
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="M12 1v4M12 19v4M1 12h4M19 12h4"></path>
+            <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </div>
         <div>
           <h4>Niwelator laserowy</h4>
           <p>Wyznaczamy poziom i linię ogrodzenia niwelatorem laserowym, dzięki czemu panele stoją równo na całej długości.</p>
+          <blockquote class="feature-quote">
+            „Ekipa montowała ogrodzenie bardzo dokładnie przy użyciu niwelatora laserowego…”
+            <cite>Jarek Wojtaszek, Local Guide</cite>
+          </blockquote>
         </div>
       </div>
       <div class="card">
-        <div class="card__icon">⛰️</div>
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20h18"></path>
+            <path d="M3 20l6-11 4 6 3-5 5 10"></path>
+          </svg>
+        </div>
         <div>
           <h4>Trudny teren</h4>
           <p>Montujemy ogrodzenia również na działkach ze spadkiem i nierównym ukształtowaniem terenu.</p>
         </div>
       </div>
       <div class="card">
-        <div class="card__icon">🔩</div>
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3v14"></path>
+            <path d="M8 6h8M8 10h8M8 14h8"></path>
+            <path d="M6 21h12"></path>
+          </svg>
+        </div>
         <div>
           <h4>Solidne słupki</h4>
           <p>Słupki osadzamy stabilnie, dobierając sposób montażu do rodzaju gruntu na działce.</p>
         </div>
       </div>
       <div class="card">
-        <div class="card__icon">🛡️</div>
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+        </div>
         <div>
           <h4>Gwarancja</h4>
           <!-- TODO: dokładny okres i zakres gwarancji do potwierdzenia z klientem -->
@@ -321,17 +354,25 @@
       <p>Przykłady ogrodzeń panelowych zamontowanych na płn. Mazowszu.</p>
     </div>
     <!--
-      Galeria realizacji — realne zdjęcia z /assets/.
+      Galeria realizacji, realne zdjęcia z /assets/. Tylko panele 2D/3D.
       alt opisuje typ ogrodzenia na zdjęciu (bez zmyślania lokalizacji).
+      Kolejność: mocniejsze kadry najpierw, najsłabszy (realizacje-4) na końcu.
+      Uwaga: realizacje-1 jest użyte jako zdjęcie w hero, więc nie dublujemy go
+      w siatce; realizacje-3 (profile poziome + brama przesuwna) to inny produkt,
+      pokazany osobno pod galerią.
     -->
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="assets/realizacje-1.webp" loading="lazy" alt="Ogrodzenie panelowe 3D w kolorze antracyt z podmurówką, montaż przy domu jednorodzinnym"></div>
-      <div class="gallery-item"><img src="assets/realizacje-2.webp" loading="lazy" alt="Ogrodzenie panelowe 3D w kolorze antracyt z podmurówką systemową"></div>
-      <div class="gallery-item"><img src="assets/realizacje-3.webp" loading="lazy" alt="Nowoczesne ogrodzenie z profili poziomych w kolorze antracyt z bramą i furtką"></div>
-      <div class="gallery-item"><img src="assets/realizacje-4.webp" loading="lazy" alt="Ogrodzenie panelowe 3D antracyt z podmurówką na działce z ogrodem"></div>
-      <div class="gallery-item"><img src="assets/realizacje-5.jpg" loading="lazy" alt="Wysokie ogrodzenie panelowe w kolorze zielonym przy terenie przemysłowym"></div>
-      <div class="gallery-item"><img src="assets/realizacje-6.jpg" loading="lazy" alt="Czarne ogrodzenie panelowe 3D z furtką i podmurówką"></div>
+      <div class="gallery-item"><img src="assets/realizacje-6.jpg" loading="lazy" alt="Czarne ogrodzenie panelowe 3D z furtką, teren wiejski"></div>
+      <div class="gallery-item"><img src="assets/realizacje-2.webp" loading="lazy" alt="Ogrodzenie panelowe 3D w kolorze antracyt z podmurówką systemową, przy domu"></div>
+      <div class="gallery-item"><img src="assets/realizacje-5.jpg" loading="lazy" alt="Ogrodzenie panelowe 2D w kolorze zielonym wzdłuż terenu"></div>
+      <div class="gallery-item"><img src="assets/realizacje-4.webp" loading="lazy" alt="Ogrodzenie panelowe 3D antracyt z podmurówką na działce"></div>
     </div>
+
+    <!-- Inny produkt (nie panel 2D/3D): brama przesuwna z profili poziomych -->
+    <figure class="gallery-feature">
+      <img src="assets/realizacje-3.webp" loading="lazy" alt="Nowoczesne ogrodzenie z profili poziomych w kolorze antracyt z bramą przesuwną, na kostce brukowej">
+      <figcaption>Realizujemy też bramy przesuwne i ogrodzenia z profili poziomych.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -382,7 +423,7 @@
       <span class="eyebrow">Zasięg działania</span>
       <h2>Montujemy na płn. Mazowszu</h2>
       <!-- TODO: potwierdzić z klientem dokładną listę obsługiwanych miejscowości / promień dojazdu -->
-      <p>Poniżej przykładowa lista miejscowości w regionie — dokładny zasięg do potwierdzenia.</p>
+      <p>Poniżej przykładowa lista miejscowości w regionie (dokładny zasięg do potwierdzenia).</p>
     </div>
     <div class="city-list">
       <span class="city-pill">Ciechanów</span>
@@ -406,7 +447,7 @@
 <section class="section section--dark final-cta">
   <div class="container">
     <h2>Sprawdź cenę swojego ogrodzenia już teraz</h2>
-    <p>To zajmie 2 minuty — bez zobowiązań.</p>
+    <p>To zajmie 2 minuty, bez zobowiązań.</p>
     <a href="#kalkulator" class="btn btn-cta" data-event="cta_final">Oblicz cenę ogrodzenia</a>
     <div class="final-cta__phone">lub zadzwoń: <a href="tel:+48518784697">518 784 697</a></div>
   </div>
@@ -414,7 +455,7 @@
 
 <footer class="site-footer">
   <div class="container">
-    <p>Mamino Ogrodzenia — sprzedaż i montaż ogrodzeń panelowych, płn. Mazowsze</p>
+    <p>Mamino Ogrodzenia. Sprzedaż i montaż ogrodzeń panelowych, płn. Mazowsze</p>
     <p><a href="tel:+48518784697">518 784 697</a></p>
   </div>
 </footer>

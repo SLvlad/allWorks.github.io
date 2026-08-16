@@ -7,12 +7,12 @@ Netlify, bez backendu (leady zbiera Netlify Forms).
 ### Struktura plików
 
 ```
-mamino.html          — cała strona (9 sekcji: hero, kalkulator, ...)
+index.html           — cała strona (9 sekcji: hero, kalkulator, ...)
 css/mamino.css       — zmienne kolorów/typografii z brand kitu, style sekcji
 js/calculator.js     — logika kalkulatora ceny + wysyłka formularza leada
 js/tracking.js       — wysyłka zdarzeń do dataLayer (GTM) i Meta Pixel
 js/animations.js     — cień nagłówka po scrollu + reveal-on-scroll (IntersectionObserver)
-assets/              — logo, tła SVG, placeholdery galerii
+assets/              — logo, zdjęcia realizacji, tła SVG
 netlify.toml         — konfiguracja deployu
 ```
 
@@ -20,24 +20,23 @@ netlify.toml         — konfiguracja deployu
 
 1. Połącz repozytorium z Netlify (branch `claude/mamino-ogrodzenia-landing-uf45d1`
    lub branch docelowy po scaleniu) — build command: brak, publish directory: `.`
-2. Strona nie jest plikiem `index.html`, więc pod adresem głównym domeny
-   (`/`) Netlify pokaże domyślny 404, dopóki nie dodasz przekierowania lub
-   nie zmienisz nazwy pliku na `index.html`. Otwórz `netlify.toml`, jeśli
-   chcesz, by `mamino.html` był stroną główną — dodaj tam redirect `/ -> /mamino.html`.
-   W międzyczasie strona działa pod bezpośrednim adresem `/mamino.html`.
+2. Strona główna to `index.html`, więc działa pod „/” bez żadnych
+   przekierowań (żaden redirect nie jest potrzebny).
 3. Po pierwszym deployu w panelu Netlify → **Forms** pojawi się formularz
    `wycena` — tam trafiają leady (imię + telefon + orientacyjna cena).
    Można podpiąć powiadomienia e-mail/Slack w ustawieniach formularza.
-4. Podmień treści oznaczone `TODO` / `[MISSING]` w `mamino.html` przed
+4. Podmień treści oznaczone `TODO` / `[MISSING]` w `index.html` przed
    publikacją (patrz sekcja "Do uzupełnienia przed publikacją" niżej).
 
 ### Jak wstawić prawdziwy Meta Pixel ID
 
 W pliku `js/tracking.js`:
 
-1. Znajdź linię `var PIXEL_ID = "PIXEL_ID";` i wstaw prawdziwe ID Pixela.
-2. Odkomentuj blok inicjalizujący skrypt Meta Pixel (`fbq('init', ...)`)
-   tuż pod komentarzem "Meta Pixel bootstrap" w tym samym pliku.
+1. Znajdź linię `var PIXEL_ID = "PIXEL_ID";` (oznaczona „KROK 1") i wstaw
+   prawdziwe ID Pixela.
+2. Odkomentuj cały blok „KROK 2" tuż poniżej (bootstrap `fbq('init', ...)`).
+   Funkcja `track()` sama zacznie wysyłać zdarzenia do Pixela, nic więcej nie
+   trzeba zmieniać.
 3. Zdarzenia już są spięte z klikami/submitami: `cta_hero`, `cta_final`,
    `cta_header`, `calc_start` (pierwsza interakcja z kalkulatorem),
    `calc_submit` (wysłanie formularza wyceny). Sprawdzisz je w konsoli
@@ -93,18 +92,19 @@ klikalny numer + przyciski w hero i na dole). Meta viewport jest już w
 
 ### Do uzupełnienia przed publikacją
 
-W `mamino.html` oznaczono komentarzami `TODO` / `[MISSING]` miejsca, których
+W `index.html` oznaczono komentarzami `TODO` / `[MISSING]` miejsca, których
 **nie wolno było wypełnić wymyślonymi faktami**:
 
-- Sekcja **Jak montujemy** → gwarancja — brak konkretnego okresu gwarancji,
+- Sekcja **Jak montujemy**, gwarancja: brak konkretnego okresu gwarancji,
   do potwierdzenia z klientem.
-- Sekcja **Zasięg** — przykładowa lista miejscowości płn. Mazowsza, do
+- Sekcja **Zasięg**: przykładowa lista miejscowości płn. Mazowsza, do
   potwierdzenia dokładnego promienia/listy miast z klientem.
-- **Hero** używa tymczasowej grafiki SVG (`assets/hero-bg.svg`) — warto
-  podmienić na prawdziwe zdjęcie montażu.
+- **Logo** (`assets/logo.svg`) to odtworzony znak (domek z czerwonym dachem
+  + MAMINO OGRODZENIA). Jeśli macie oryginalny plik, podmieńcie go.
 
-Gotowe (uzupełnione): sekcja **Opinie** ma 4 prawdziwe opinie z Google,
-a galeria **Realizacje** — 6 prawdziwych zdjęć montaży.
+Gotowe (uzupełnione): **hero** używa prawdziwego zdjęcia (`realizacje-1`),
+sekcja **Opinie** ma 4 prawdziwe opinie z Google, a galeria **Realizacje**
+pokazuje wyłącznie panele 2D/3D (osobno pod nią przykład bramy przesuwnej).
 
 Dane, które **są** podane wprost w briefie i użyte bez zmian: telefon
 `518 784 697`, badge „4,8★ w 44 opiniach Google”.
