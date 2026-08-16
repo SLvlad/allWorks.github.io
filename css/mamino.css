@@ -210,7 +210,9 @@ p { margin: 0 0 var(--space-2); }
 }
 
 .site-header__logo img {
-  height: 40px;
+  height: 58px;   /* nowy znak jest złożony (dom + MAMINO + OGRODZENIA) */
+  width: auto;
+  display: block;
 }
 
 .site-header__right {
@@ -1124,8 +1126,8 @@ p { margin: 0 0 var(--space-2); }
   .section-head { margin-bottom: var(--space-3); }
 
   /* Nagłówek: logo + telefon; długie CTA chowamy (jest w hero i na dole) */
-  .site-header .container { height: 68px; }
-  .site-header__logo img { height: 32px; }
+  .site-header .container { height: 72px; }
+  .site-header__logo img { height: 46px; }
   .site-header__right { gap: var(--space-2); }
   .site-header__right .btn { display: none; }
   .site-header__phone { font-size: 16px; }

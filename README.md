@@ -99,8 +99,10 @@ W `index.html` oznaczono komentarzami `TODO` / `[MISSING]` miejsca, których
   do potwierdzenia z klientem.
 - Sekcja **Zasięg**: przykładowa lista miejscowości płn. Mazowsza, do
   potwierdzenia dokładnego promienia/listy miast z klientem.
-- **Logo** (`assets/logo.svg`) to odtworzony znak (domek z czerwonym dachem
-  + MAMINO OGRODZENIA). Jeśli macie oryginalny plik, podmieńcie go.
+Logo: użyto oficjalnego znaku klienta (`assets/logo-mamino.pdf`). Do strony
+wyeksportowano `assets/logo.png` (wariant ciemny, przezroczysty, w nagłówku)
+oraz `assets/logo-white.png` (wariant jasny na ciemne tła, do wykorzystania
+w razie potrzeby).
 
 Gotowe (uzupełnione): **hero** używa prawdziwego zdjęcia (`realizacje-1`),
 sekcja **Opinie** ma 4 prawdziwe opinie z Google, a galeria **Realizacje**
