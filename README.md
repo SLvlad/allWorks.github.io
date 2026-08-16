@@ -104,7 +104,7 @@ W `index.html` oznaczono komentarzami `TODO` / `[MISSING]` miejsca, których
 
 Gotowe (uzupełnione): **hero** używa prawdziwego zdjęcia (`realizacje-1`),
 sekcja **Opinie** ma 4 prawdziwe opinie z Google, a galeria **Realizacje**
-pokazuje wyłącznie panele 2D/3D (osobno pod nią przykład bramy przesuwnej).
+pokazuje 6 prawdziwych zdjęć (realizacje-2..7; realizacje-1 jest w hero).
 
 Dane, które **są** podane wprost w briefie i użyte bez zmian: telefon
 `518 784 697`, badge „4,8★ w 44 opiniach Google”.
