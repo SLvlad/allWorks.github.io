@@ -51,8 +51,11 @@ pliku `js/calculator.js`. Aktualne wartości to **przykładowe dane robocze**,
 oznaczone komentarzem `// TODO: podtwierdzić w kliencie` — nie są to
 potwierdzone ceny. Przed publikacją zastąp je realnym cennikiem:
 
-- `basePricePerMb` — cena bazowa zł/mb (103 cm, drut 4 mm, słupek 1,5 mm)
+- `basePricePerMb` — cena bazowa zł/mb zależna od rodzaju panelu:
+  `{ "3d": 38, "2d": 60 }` (ceny startowe wg klienta; 103 cm, drut 4 mm,
+  słupek 1,5 mm, bez dodatków)
 - `heightMultiplier`, `wireMultiplier`, `postMultiplier` — mnożniki ceny/mb
+  (wspólne dla 2D i 3D — jeśli mają się różnić, do potwierdzenia z klientem)
 - `colorSurchargePerMb` — dopłata za kolor
 - `podmurowkaPerMb` — dopłata za podmurówkę systemową
 - `furtkaPrice` — cena za sztukę furtki
@@ -79,19 +82,29 @@ wyłączone, gdy użytkownik ma w systemie włączone „ogranicz animacje”
 (`prefers-reduced-motion: reduce`) — treść zostaje wtedy w pełni widoczna,
 tylko bez ruchu.
 
+### Responsywność (desktop + telefon)
+
+Układ desktopowy jest bazowy, a responsywność dodano na końcu
+`css/mamino.css` w sekcji RESPONSYWNOŚĆ (media queries 980 / 600 / 380 px):
+kalkulator i siatki zwijają się do jednej/dwóch kolumn, nagłówki i hero
+skalują czcionki, w nagłówku na telefonie chowa się długie CTA (pozostaje
+klikalny numer + przyciski w hero i na dole). Meta viewport jest już w
+`<head>`. Brak poziomego przewijania na 390 px (sprawdzone).
+
 ### Do uzupełnienia przed publikacją
 
 W `mamino.html` oznaczono komentarzami `TODO` / `[MISSING]` miejsca, których
 **nie wolno było wypełnić wymyślonymi faktami**:
 
-- Sekcja **Opinie** — cytaty i imiona to placeholdery. Trzeba wstawić
-  prawdziwe opinie z wizytówki Google (nie publikować fikcyjnych opinii).
 - Sekcja **Jak montujemy** → gwarancja — brak konkretnego okresu gwarancji,
   do potwierdzenia z klientem.
 - Sekcja **Zasięg** — przykładowa lista miejscowości płn. Mazowsza, do
   potwierdzenia dokładnego promienia/listy miast z klientem.
-- Zdjęcia w hero i w sekcji **Realizacje** to tymczasowe grafiki SVG —
-  zastąpić prawdziwymi zdjęciami montaży.
+- **Hero** używa tymczasowej grafiki SVG (`assets/hero-bg.svg`) — warto
+  podmienić na prawdziwe zdjęcie montażu.
+
+Gotowe (uzupełnione): sekcja **Opinie** ma 4 prawdziwe opinie z Google,
+a galeria **Realizacje** — 6 prawdziwych zdjęć montaży.
 
 Dane, które **są** podane wprost w briefie i użyte bez zmian: telefon
 `518 784 697`, badge „4,8★ w 44 opiniach Google”.

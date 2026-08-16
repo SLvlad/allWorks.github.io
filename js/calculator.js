@@ -17,8 +17,12 @@
   // ------------------------------------------------------------------------
   var PRICING = {
     // Cena bazowa za mb przy: wysokość 103 cm, drut 4 mm, słupek 1,5 mm,
-    // bez podmurówki, bez dodatków.
-    basePricePerMb: 38, // zł/mb // TODO: podtwierdzić w kliencie
+    // bez podmurówki, bez dodatków. Zależna od rodzaju panelu.
+    // Wg informacji od klienta: panel 3D od 38 zł/mb, panel 2D od 60 zł/mb.
+    basePricePerMb: {
+      "3d": 38, // zł/mb (cena startowa)
+      "2d": 60  // zł/mb (cena startowa)
+    },
 
     // Mnożnik ceny za mb w zależności od wysokości ogrodzenia.
     heightMultiplier: {
@@ -105,6 +109,7 @@
   function readState() {
     return {
       length: Math.max(0, parseFloat(fields.length.value) || 0),
+      panel: pillState.panel, // "3d" | "2d"
       height: pillState.height,
       color: pillState.color,
       wire: pillState.wire,
@@ -117,7 +122,7 @@
   }
 
   function calculate(state) {
-    var perMb = PRICING.basePricePerMb;
+    var perMb = PRICING.basePricePerMb[state.panel] || PRICING.basePricePerMb["3d"];
     perMb *= PRICING.heightMultiplier[state.height] || 1;
     perMb *= PRICING.wireMultiplier[state.wire] || 1;
     perMb *= PRICING.postMultiplier[state.post] || 1;
@@ -159,6 +164,7 @@
 
     breakdownEl.textContent =
       pln.format(Math.round(result.perMb)) + " zł/mb · " +
+      "panel " + String(result.state.panel).toUpperCase() + " · " +
       result.state.length + " mb · " +
       result.state.height + " cm · drut " + result.state.wire + " mm";
 

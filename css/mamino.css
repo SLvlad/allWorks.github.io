@@ -1,9 +1,8 @@
 /* ==========================================================================
    Mamino Ogrodzenia — landing page styles
    Zmienne kolorów/typografii zgodnie z mamino-brand-kit.md
-   UWAGA: aktualnie stylujemy TYLKO pod desktop (patrz brief). Media queries
-   pod mobile dodamy w kolejnym etapie — kontener ma max-width, więc layout
-   się nie psuje na węższych ekranach, ale nie jest jeszcze zoptymalizowany.
+   Układ desktopowy jest bazowy; responsywność (tablet/telefon) na dole pliku
+   w sekcji RESPONSYWNOŚĆ (@media 980px / 600px / 380px).
    ========================================================================== */
 
 :root {
@@ -427,6 +426,19 @@ p { margin: 0 0 var(--space-2); }
   background: rgba(233, 118, 43, 0.08);
   color: var(--color-ink);
   font-weight: 700;
+}
+
+/* dopisek z ceną startową w pigułce (np. "od 38 zł/mb") */
+.calc-pill__hint {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.calc-pill.is-active .calc-pill__hint {
+  color: var(--color-cta);
 }
 
 /* --- Furtki i bramy: dwa selecty obok siebie --- */
@@ -995,4 +1007,104 @@ p { margin: 0 0 var(--space-2); }
     40%  { transform: scale(1.06); }
     100% { transform: scale(1); }
   }
+}
+
+/* ==========================================================================
+   RESPONSYWNOŚĆ — wersja na tablety i telefony
+   Desktop pozostaje bez zmian; poniżej nadpisujemy tylko układ na węższych
+   ekranach. Breakpointy: 980px (tablet / wąski laptop) i 600px (telefon).
+   ========================================================================== */
+
+/* --- Tablety i wąskie ekrany (≤ 980px) --- */
+@media (max-width: 980px) {
+  h1 { font-size: 48px; }
+  h2 { font-size: 34px; }
+  .hero h1 { font-size: 46px; }
+
+  .section { padding: var(--space-5) 0; }
+
+  /* Kalkulator: formularz i wynik jeden pod drugim */
+  .calculator__wrap {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .calc-result-col {
+    position: static; /* koniec "przyklejania" wyniku przy scrollu */
+  }
+
+  /* Siatki wielokolumnowe -> 2 kolumny */
+  .compare,
+  .feature-grid,
+  .testimonials {
+    grid-template-columns: 1fr 1fr;
+  }
+  .steps {
+    grid-template-columns: 1fr 1fr 1fr; /* 3 kroki wciąż mieszczą się w rzędzie */
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Telefony (≤ 600px) --- */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+
+  h1 { font-size: 38px; }
+  h2 { font-size: 30px; }
+  h3 { font-size: 22px; }
+  .hero h1 { font-size: 38px; }
+  .hero p.lead { font-size: 17px; }
+
+  .container { padding: 0 var(--space-2); }
+  .section { padding: var(--space-4) 0; }
+  .section-head { margin-bottom: var(--space-3); }
+
+  /* Nagłówek: logo + telefon; długie CTA chowamy (jest w hero i na dole) */
+  .site-header .container { height: 68px; }
+  .site-header__logo img { height: 32px; }
+  .site-header__right { gap: var(--space-2); }
+  .site-header__right .btn { display: none; }
+  .site-header__phone { font-size: 16px; }
+
+  .hero .container {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-5);
+  }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { width: 100%; }
+
+  /* Kalkulator na telefonie */
+  .calc-card { padding: var(--space-3); }
+  .calc-grid { grid-template-columns: 1fr; }   /* wszystkie pola w jednej kolumnie */
+  .calc-field--span2 { grid-column: auto; }
+  .calc-subgrid { grid-template-columns: 1fr; } /* furtka i brama jedna pod drugą */
+  .calc-length-input { max-width: 100%; }
+  .calc-result__price { font-size: 44px; }
+
+  /* Wszystkie siatki -> jedna kolumna */
+  .compare,
+  .steps,
+  .feature-grid,
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-1);
+  }
+  .gallery-item img { height: 180px; }
+
+  /* Przyciski pełnej szerokości wygodniejsze pod kciuk */
+  .btn { padding: 14px 28px; }
+  .final-cta .btn { width: 100%; }
+
+  .city-list { gap: 8px; }
+}
+
+/* --- Bardzo wąskie telefony (≤ 380px) --- */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 32px; }
+  h2 { font-size: 26px; }
+  .gallery-grid { grid-template-columns: 1fr; }
 }
