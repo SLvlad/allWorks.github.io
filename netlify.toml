@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+  command = ""
+
+# Statyczna strona bez kroku budowania. Strona główna to index.html, więc
+# działa pod "/" bez żadnych przekierowań. Netlify wykrywa formularz "wycena"
+# w index.html automatycznie dzięki atrybutowi data-netlify="true".
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

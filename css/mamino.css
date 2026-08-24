@@ -1,0 +1,1175 @@
+/* ==========================================================================
+   Mamino Ogrodzenia — landing page styles
+   Zmienne kolorów/typografii zgodnie z mamino-brand-kit.md
+   Układ desktopowy jest bazowy; responsywność (tablet/telefon) na dole pliku
+   w sekcji RESPONSYWNOŚĆ (@media 980px / 600px / 380px).
+   ========================================================================== */
+
+:root {
+  /* --- Kolory marki (paleta Mamino: chłodna, miętowa) --- */
+  --color-ink: #070707;          /* nagłówki na jasnym tle + ciemne sekcje (hero, wynik) */
+  --color-ink-soft: #000000;     /* najciemniejsze tło (stopka) */
+  --color-bg: #FFFFFF;           /* tło podstawowe */
+  --color-bg-alt: #F5FFF5;       /* tło naprzemienne (miętowe) */
+  --color-border: #EBEBEB;       /* linie / obramowania płaskich kart */
+  --color-text: #333333;         /* tekst główny */
+  --color-text-muted: #6B6B66;
+  --color-text-on-dark: #FFFFFF;
+
+  --color-cta: #E9762B;          /* główny kolor CTA (bez zmian) */
+  --color-cta-hover: #D2661F;
+  --color-cta-ink: #FFFFFF;
+
+  --color-success: #4C7A5A;      /* used sparingly, e.g. checkmarks */
+
+  /* --- Typografia (Google Fonts) --- */
+  --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif; /* nagłówki */
+  --font-body: 'Lato', Arial, sans-serif;                    /* tekst */
+  --font-accent: 'Questrial', Arial, sans-serif;              /* przyciski, etykiety, nav */
+
+  /* --- Layout --- */
+  --container-max: 1180px;
+  --radius-pill: 999px;
+  --radius-card: 12px;           /* płaskie karty, radius 12px wg brand kit */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 96px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.55;
+  font-size: 17px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.05;
+  margin: 0 0 var(--space-2);
+  color: var(--color-ink);
+}
+
+h1 { font-size: 64px; }
+h2 { font-size: 42px; }
+h3 { font-size: 26px; }
+h4 { font-size: 20px; }
+
+p { margin: 0 0 var(--space-2); }
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-3);
+}
+
+.eyebrow {
+  font-family: var(--font-accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  color: var(--color-cta);
+  display: inline-block;
+  margin-bottom: var(--space-1);
+}
+
+.section {
+  position: relative;
+  padding: var(--space-6) 0;
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section--dark {
+  background: var(--color-ink);
+  color: var(--color-text-on-dark);
+}
+
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--color-text-on-dark);
+}
+
+.section-head {
+  max-width: 720px;
+  margin: 0 auto var(--space-5);
+  text-align: center;
+}
+
+.section-head p {
+  color: var(--color-text-muted);
+  font-size: 18px;
+}
+
+.section--dark .section-head p {
+  color: #C9C7BF;
+}
+
+/* --- Buttons (pill, flat, no shadows per brand kit) --- */
+.btn {
+  font-family: var(--font-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  padding: 16px 36px;
+  font-size: 16px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-cta {
+  background: var(--color-cta);
+  color: var(--color-cta-ink);
+}
+
+.btn-cta:hover {
+  background: var(--color-cta-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.btn-outline:hover {
+  background: var(--color-ink);
+  color: var(--color-text-on-dark);
+}
+
+.section--dark .btn-outline {
+  border-color: var(--color-text-on-dark);
+  color: var(--color-text-on-dark);
+}
+
+.section--dark .btn-outline:hover {
+  background: var(--color-text-on-dark);
+  color: var(--color-ink);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* --- Flat cards, no shadows --- */
+.card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-3);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+}
+
+.site-header__logo img {
+  height: 58px;   /* nowy znak jest złożony (dom + MAMINO + OGRODZENIA) */
+  width: auto;
+  display: block;
+}
+
+.site-header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-accent);
+}
+
+.site-header__phone {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  color: var(--color-text-on-dark);
+  background: var(--color-ink);
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  /* mocniejsze przyciemnienie: jasne zdjęcie realizacji + biały tekst */
+  background:
+    linear-gradient(180deg, rgba(7,7,7,0.60) 0%, rgba(7,7,7,0.80) 100%),
+    linear-gradient(90deg, rgba(7,7,7,0.55) 0%, rgba(7,7,7,0.15) 70%);
+}
+
+.hero .container {
+  position: relative;
+  padding-top: var(--space-6);
+  padding-bottom: 120px;
+  max-width: 760px;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-accent);
+  font-size: 14px;
+  background: rgba(245, 243, 239, 0.12);
+  border: 1px solid rgba(245, 243, 239, 0.35);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  margin-bottom: var(--space-3);
+}
+
+.hero__badge .stars {
+  color: var(--color-cta);
+}
+
+.hero h1 {
+  color: var(--color-text-on-dark);
+  font-size: 68px;
+  margin-bottom: var(--space-3);
+}
+
+.hero p.lead {
+  font-size: 20px;
+  color: #E2E0D8;
+  max-width: 560px;
+  margin-bottom: var(--space-4);
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.hero__hint {
+  margin-top: var(--space-3);
+  font-family: var(--font-accent);
+  font-size: 14px;
+  color: #B9B7AE;
+}
+
+/* ==========================================================================
+   Wave divider
+   ========================================================================== */
+.wave-divider {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.wave-divider svg {
+  width: 100%;
+  height: 64px;
+  display: block;
+}
+
+/* ==========================================================================
+   Kalkulator
+   ========================================================================== */
+.calculator {
+  background: var(--color-bg);
+}
+
+.calculator__wrap {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.calc-card {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calc-field label,
+.calc-field__label {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calc-num {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-cta);
+  color: var(--color-cta);
+  font-family: var(--font-accent);
+  font-size: 12px;
+}
+
+.calc-field input[type="text"],
+.calc-field input[type="tel"],
+.calc-field input[type="number"],
+.calc-field select {
+  font-family: var(--font-body);
+  font-size: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-bg);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.calc-field input:focus,
+.calc-field select:focus {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 1px;
+}
+
+.calc-field--span2 {
+  grid-column: span 2;
+}
+
+/* --- Pigułki wyboru (wysokość, kolor, grubość, podmurówka, montaż) --- */
+.calc-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calc-pill {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.calc-pill:hover {
+  border-color: var(--color-cta);
+}
+
+.calc-pill.is-active {
+  border-color: var(--color-cta);
+  background: rgba(233, 118, 43, 0.08);
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+/* dopisek z ceną startową w pigułce (np. "od 38 zł/mb") */
+.calc-pill__hint {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.calc-pill.is-active .calc-pill__hint {
+  color: var(--color-cta);
+}
+
+/* --- Furtki i bramy: dwa selecty obok siebie --- */
+.calc-subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.calc-subfield {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calc-subfield label {
+  font-family: var(--font-accent);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* --- Suwak długości ogrodzenia --- */
+.calc-length-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.calc-length-input {
+  position: relative;
+  max-width: 180px;
+}
+
+.calc-length-input input[type="number"] {
+  padding-right: 42px;
+}
+
+.calc-length-unit {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  font-family: var(--font-accent);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.calc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(
+    to right,
+    var(--color-cta) 0%,
+    var(--color-cta) 15%,
+    var(--color-border) 15%,
+    var(--color-border) 100%
+  );
+  outline: none;
+  cursor: pointer;
+  margin: 6px 0;
+}
+
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-cta);
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-cta);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.calc-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.calc-slider::-moz-range-track {
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+}
+
+.calc-slider::-moz-range-progress {
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-cta);
+}
+
+.calc-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-cta);
+  border: 3px solid var(--color-bg);
+  box-shadow: 0 0 0 1px var(--color-cta);
+  cursor: pointer;
+}
+
+.calc-slider:focus-visible {
+  outline: 2px solid var(--color-cta);
+  outline-offset: 3px;
+}
+
+.calc-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-3) 0;
+}
+
+/* Result sidebar */
+.calc-result-col {
+  position: sticky;
+  top: 104px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.calc-result {
+  background: var(--color-ink);
+  color: var(--color-text-on-dark);
+  border-radius: 16px;
+  padding: var(--space-4);
+}
+
+.calc-result__label {
+  font-family: var(--font-accent);
+  font-size: 15px;
+  color: #B9B7AE;
+  margin-bottom: 4px;
+}
+
+.calc-result__price {
+  font-family: var(--font-display);
+  font-size: 52px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-cta);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.calc-result__breakdown {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #B9B7AE;
+  margin-bottom: 0;
+}
+
+.calc-disclaimer {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-2) var(--space-3);
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.calc-lead-form {
+  margin-top: var(--space-3);
+}
+
+.calc-lead-form__intro {
+  font-size: 15px;
+  color: #D8D6CD;
+  margin-bottom: var(--space-2);
+}
+
+.calc-lead-form__hint {
+  font-size: 13px;
+  color: #9C9A92;
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+/* Mini-pasek zaufania nad przyciskiem (dyskretny, nie konkuruje z CTA) */
+.trust-bar {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 0;
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-accent);
+  font-size: 12px;
+  color: #C9C7BF;
+}
+
+.trust-bar li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trust-bar li + li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.trust-bar li + li::before {
+  content: "·";
+  position: absolute;
+  left: 2px;
+  color: #6f6e68;
+}
+
+.trust-bar__star {
+  color: var(--color-cta);
+}
+
+.calc-lead-form label {
+  font-family: var(--font-accent);
+  font-size: 13px;
+  color: #B9B7AE;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.calc-lead-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(245,243,239,0.3);
+  background: rgba(245,243,239,0.08);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-body);
+  font-size: 15px;
+  margin-bottom: var(--space-2);
+}
+
+.calc-lead-form input::placeholder {
+  color: #9C9A92;
+}
+
+.calc-lead-form__success {
+  display: none;
+  background: rgba(76, 122, 90, 0.2);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-card);
+  padding: var(--space-2);
+  font-size: 14px;
+}
+
+.calc-lead-form__success.is-visible {
+  display: block;
+}
+
+.calc-lead-form.is-submitted .calc-lead-form__fields {
+  display: none;
+}
+
+/* ==========================================================================
+   Problem -> rozwiązanie
+   ========================================================================== */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.compare .card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.compare .card--bad h3::before {
+  content: "✕";
+  color: #B5453A;
+}
+
+.compare .card--good {
+  border-color: var(--color-cta);
+}
+
+.compare .card--good h3::before {
+  content: "✓";
+  color: var(--color-cta);
+}
+
+.compare ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--color-text-muted);
+}
+
+.compare ul li {
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   Proces (kroki)
+   ========================================================================== */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  counter-reset: step;
+}
+
+.step {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-3);
+  background: var(--color-bg);
+}
+
+.step__num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: var(--color-cta);
+  margin-bottom: var(--space-1);
+}
+
+/* ==========================================================================
+   Jak montujemy
+   ========================================================================== */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.feature-grid .card {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.feature-grid .card__icon {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;                    /* zaokrąglona kolorowa plakietka */
+  background: rgba(233, 118, 43, 0.12);   /* tint CTA */
+  color: var(--color-cta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-grid .card__icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Cytat-dowód przy claimie (np. niwelator laserowy) */
+.feature-quote {
+  margin: var(--space-2) 0 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--color-cta);
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.feature-quote cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  font-family: var(--font-accent);
+  font-size: 13px;
+  color: var(--color-ink);
+}
+
+/* ==========================================================================
+   Realizacje (galeria)
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;            /* zgodnie z brand kit */
+  overflow: hidden;
+  border: 1px solid #EBEBEB;      /* zgodnie z brand kit */
+  background: var(--color-bg-alt);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;              /* jednolite proporcje kafelków */
+  display: block;
+}
+
+/* ==========================================================================
+   Opinie
+   ========================================================================== */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+.testimonial {
+  border: 1px solid #EBEBEB;      /* zgodnie z brand kit */
+  border-top: 3px solid var(--color-cta);
+  border-radius: 12px;            /* zgodnie z brand kit */
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial p {
+  flex: 1;                        /* wyrównuje wysokość kart mimo różnej długości opinii */
+}
+
+.testimonial__stars {
+  color: var(--color-cta);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.testimonial p {
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+.testimonial__name {
+  font-family: var(--font-accent);
+  font-size: 15px;
+  color: var(--color-ink);
+}
+
+.testimonial__meta {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Zasięg
+   ========================================================================== */
+.city-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.city-pill {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 8px 20px;
+  background: var(--color-bg);
+}
+
+/* ==========================================================================
+   CTA końcowe
+   ========================================================================== */
+.final-cta {
+  text-align: center;
+}
+
+.final-cta__phone {
+  margin-top: var(--space-3);
+  font-family: var(--font-accent);
+  font-size: 20px;
+}
+
+.final-cta__phone a {
+  color: var(--color-cta);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  background: var(--color-ink-soft);
+  color: #B9B7AE;
+  padding: var(--space-4) 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--color-text-on-dark);
+}
+
+/* Netlify honeypot field must stay hidden but present in DOM */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Animacje — subtelne ożywienie strony
+   Mikro-interakcje (hover) działają zawsze. Automatyczne animacje (wejście
+   hero, pulsy, reveal-on-scroll) są wyłączone dla prefers-reduced-motion.
+   ========================================================================== */
+
+.site-header {
+  transition: box-shadow 0.25s ease;
+}
+
+.site-header--scrolled {
+  box-shadow: 0 2px 14px rgba(26, 26, 26, 0.08);
+}
+
+.btn {
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.card,
+.step {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover,
+.step:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-cta);
+}
+
+.gallery-item img {
+  transition: transform 0.35s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.city-pill {
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, transform 0.15s ease;
+}
+
+.city-pill:hover {
+  background: var(--color-cta);
+  border-color: var(--color-cta);
+  color: var(--color-cta-ink);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Wejście elementów hero przy załadowaniu strony */
+  .hero__badge,
+  .hero h1,
+  .hero p.lead,
+  .hero__actions,
+  .hero__hint {
+    opacity: 0;
+    animation: mamino-fade-in-up 0.6s ease forwards;
+  }
+
+  .hero__badge   { animation-delay: 0.05s; }
+  .hero h1       { animation-delay: 0.15s; }
+  .hero p.lead   { animation-delay: 0.28s; }
+  .hero__actions { animation-delay: 0.4s; }
+  .hero__hint    { animation-delay: 0.5s; }
+
+  @keyframes mamino-fade-in-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Delikatny puls gwiazdek w badge */
+  .hero__badge .stars {
+    display: inline-block;
+    animation: mamino-star-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes mamino-star-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.55; }
+  }
+
+  /* Lekkie unoszenie się fali-dzielnika sekcji */
+  .wave-divider svg {
+    animation: mamino-wave-float 6s ease-in-out infinite;
+  }
+
+  @keyframes mamino-wave-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(4px); }
+  }
+
+  /* Reveal-on-scroll — klasy ".reveal" dodaje js/animations.js */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Puls ceny w kalkulatorze przy każdej zmianie parametrów */
+  .calc-result__price.is-updated {
+    animation: mamino-price-pulse 0.35s ease;
+  }
+
+  @keyframes mamino-price-pulse {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.06); }
+    100% { transform: scale(1); }
+  }
+}
+
+/* ==========================================================================
+   RESPONSYWNOŚĆ — wersja na tablety i telefony
+   Desktop pozostaje bez zmian; poniżej nadpisujemy tylko układ na węższych
+   ekranach. Breakpointy: 980px (tablet / wąski laptop) i 600px (telefon).
+   ========================================================================== */
+
+/* --- Tablety i wąskie ekrany (≤ 980px) --- */
+@media (max-width: 980px) {
+  h1 { font-size: 48px; }
+  h2 { font-size: 34px; }
+  .hero h1 { font-size: 46px; }
+
+  .section { padding: var(--space-5) 0; }
+
+  /* Kalkulator: formularz i wynik jeden pod drugim */
+  .calculator__wrap {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .calc-result-col {
+    position: static; /* koniec "przyklejania" wyniku przy scrollu */
+  }
+
+  /* Siatki wielokolumnowe -> 2 kolumny */
+  .compare,
+  .feature-grid,
+  .testimonials {
+    grid-template-columns: 1fr 1fr;
+  }
+  .steps {
+    grid-template-columns: 1fr 1fr 1fr; /* 3 kroki wciąż mieszczą się w rzędzie */
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Telefony (≤ 600px) --- */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+
+  h1 { font-size: 38px; }
+  h2 { font-size: 30px; }
+  h3 { font-size: 22px; }
+  .hero h1 { font-size: 38px; }
+  .hero p.lead { font-size: 17px; }
+
+  .container { padding: 0 var(--space-2); }
+  .section { padding: var(--space-4) 0; }
+  .section-head { margin-bottom: var(--space-3); }
+
+  /* Nagłówek: logo + telefon; długie CTA chowamy (jest w hero i na dole) */
+  .site-header .container { height: 72px; }
+  .site-header__logo img { height: 46px; }
+  .site-header__right { gap: var(--space-2); }
+  .site-header__right .btn { display: none; }
+  .site-header__phone { font-size: 16px; }
+
+  .hero .container {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-5);
+  }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { width: 100%; }
+
+  /* Kalkulator na telefonie */
+  .calc-card { padding: var(--space-3); }
+  .calc-grid { grid-template-columns: 1fr; }   /* wszystkie pola w jednej kolumnie */
+  .calc-field--span2 { grid-column: auto; }
+  .calc-subgrid { grid-template-columns: 1fr; } /* furtka i brama jedna pod drugą */
+  .calc-length-input { max-width: 100%; }
+  .calc-result__price { font-size: 44px; }
+
+  /* Wszystkie siatki -> jedna kolumna */
+  .compare,
+  .steps,
+  .feature-grid,
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-1);
+  }
+  .gallery-item img { height: 180px; }
+
+  /* Przyciski pełnej szerokości wygodniejsze pod kciuk */
+  .btn { padding: 14px 28px; }
+  .final-cta .btn { width: 100%; }
+
+  .city-list { gap: 8px; }
+}
+
+/* --- Bardzo wąskie telefony (≤ 380px) --- */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 32px; }
+  h2 { font-size: 26px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}
