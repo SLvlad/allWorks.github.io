@@ -1,0 +1,14 @@
+# Netlify configuration — HR WORK recruiter landing page.
+# Static site: no build step, the folder is published as-is.
+
+[build]
+  publish = "."
+
+# Serve the landing page at the site root ("/") without renaming the file.
+# status = 200 is a rewrite: the address bar stays "/", the content is served
+# from Landing_Rekruterzy.html. Relative links (styles.css, app.js,
+# animations.js, Photo/…) resolve against "/" and keep working.
+[[redirects]]
+  from = "/"
+  to = "/Landing_Rekruterzy.html"
+  status = 200
